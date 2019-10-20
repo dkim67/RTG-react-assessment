@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import ProductItem from "./product-item"
 import "../../assets/css/components/product/product-list.css"
 
-const ProductList = () => {
+const ProductList = ({ products, addToCart }) => {
   const { allDataJson } = useStaticQuery(
     graphql`
       query {
@@ -25,8 +25,9 @@ const ProductList = () => {
 
   return(
     <div className="product-list grid-x grid-margin-y">
-      { allDataJson.edges[0].node.products.map(product => (
-        <ProductItem { ...product } key={ product.sku } />
+    {console.log('products passed', addToCart)}
+      { products.map(product => (
+        <ProductItem product={product} addToCart={addToCart} key={ product.sku } />
       )) }
     </div>
   )

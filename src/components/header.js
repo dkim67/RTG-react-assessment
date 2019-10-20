@@ -2,7 +2,11 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, selectedItems, removeFromCart }) => {
+  const testFunction = () => {
+    console.log('test1')
+  }
+  return (
   <header
     style={ {
       background: `rebeccapurple`,
@@ -38,13 +42,19 @@ const Header = ({ siteTitle }) => (
             right: `1.0875rem`,
             fontWeight: `700`
           }}
+          state={{
+            selectedItems: selectedItems,
+            removeFromCart: 'test'
+          }}
         >
           CART
         </Link>
       </h1>
     </div>
   </header>
-)
+  )
+}
+
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
