@@ -3,9 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 
 const Header = ({ siteTitle, selectedItems, removeFromCart }) => {
-  const testFunction = () => {
-    console.log('test1')
-  }
+  
   return (
   <header
     style={ {
