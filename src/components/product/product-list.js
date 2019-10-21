@@ -19,7 +19,7 @@ const ProductList = ({ addToCart, match }) => {
     <div className="product-list grid-x grid-margin-y">
     
       { products.map(product => (
-        <ProductItem product={product} addToCart={addToCart} cartItems={[...cartItems]} key={ product.sku } />
+        <ProductItem product={product} key={ product.sku } />
       )) }
     </div>
   )
