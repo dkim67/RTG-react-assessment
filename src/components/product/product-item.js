@@ -1,12 +1,19 @@
 import React, { useContext, useState } from "react";
 import CartContext from '../../context/cart/cart.context';
+import PriceContext from "../../context/cart/price.context";
+
 
 const ProductItem = ({ product }) => {
 
   const cart = useContext(CartContext);
 
   const [ cartCollection, addToCart] = useState(cart)
+
+  const price = useContext(PriceContext)
+
+  const [prices, setPrices] = useState(price)
   console.log('this is the cart item props', cartCollection);
+  console.log("prices", prices)
 
  
 
@@ -24,21 +31,23 @@ const ProductItem = ({ product }) => {
       <div className="product-price cell small-2">${product.price}</div>
       <div className="product-add-to-cart cell small-2">
         <button value={product.sku} onClick={(e) => {
-          let cartCheck = cartCollection.findIndex(item => item.sku === e.target.value)
+          let cartCheck = cartCollection.findIndex(item => item.sku === e.target.value);
           console.log("This is a cart check", cartCheck)
           if (cartCheck > -1) {
             cartCollection[cartCheck].quantity += 1
             addToCart(cartCollection)
             console.log("cart collection is increasing", cartCollection)
-
           } else {
             product.quantity = 1
             cartCollection.push(product)
             console.log('this is the added cartCollection arr', cartCollection)
             addToCart(cartCollection)
-
           }
-
+          prices.subtotal += product.price 
+          prices.quantity ++
+          console.log("This is prices", prices)
+          setPrices(prices)
+          console.log("prices have been added", prices)
 
         }} 
         id="add-to-cart">
