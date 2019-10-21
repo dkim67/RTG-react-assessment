@@ -14,7 +14,7 @@ const Layout = ({ children, selectedItems, removeFromCart }) => (
     selectedItems={selectedItems}
     removeFromCart={removeFromCart}
     />
-    {console.log("layout selectedItems", selectedItems)}
+  
     <div
       style={ {
         margin: `0 auto`,
